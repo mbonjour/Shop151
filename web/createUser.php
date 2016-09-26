@@ -9,26 +9,17 @@ Inter D�pendances : (Fichiers d�pendants)
 session_start();
     
     // Identificateurs
-	$dbNameAccess = "F:\\ICH 151 - Shop Online\\env_Shop\\www\\Users\\dbUsers.mdb";
+	$dbNameAccess = $_SERVER['DOCUMENT_ROOT']."\\Users\\dbUsers.mdb";
 
 	if ( isset($_POST['submit']) )
 	{
-        if (!file_exists($dbNameAccess)) {
-			die("Could not find database file.");
-		}
-		$db = odbc_connect("DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=". $dbNameAccess ."; Uid=; Pwd=;","","") or die("Connect");
+        include('connectDbAccess.php');
 		$sql  = "INSERT INTO users (username,password) VALUES ('".$_POST['pseudo']."','".$_POST['motpasse']."')";
 		$result = odbc_do($db, $sql) or die( odbc_error($db) );
 		odbc_close($db);
 
-		$servername = "localhost";
-		$username = "projet151";
-		$password = "projet151";
-
 		try {
-			$conn = new PDO("mysql:host=$servername;dbname=projet151", $username, $password);
-			// set the PDO error mode to exception
-			$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            include('connectDbSQL.php');
 			$sql = "INSERT INTO t_client (Prenom, Nom, Date_Naissance)
 			VALUES ('".$_POST['prenom']."', '".$_POST['nom']."', '".$_POST['birth']."')";
 			// use exec() because no results are returned
@@ -38,6 +29,8 @@ session_start();
 			echo "Connection failed: " . $e->getMessage();
 		}
 		$conn = null;
+        
+        header('location:home.php');
     }
         
     
@@ -81,7 +74,7 @@ session_start();
 		</p>
 		
 		<p> 
-			<input type="submit" name="submit"value="IDENTIFIER"> 
+			<input type="submit" name="submit"value="Create User"> 
 		</p> 
 		</form>
 		</main>
