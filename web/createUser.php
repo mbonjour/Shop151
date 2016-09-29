@@ -13,6 +13,8 @@ session_start();
 
 	if ( isset($_POST['submit']) )
 	{
+		$_SESSION['messageInfo']="";
+
         include('connectDbAccess.php');
 		$sql  = "INSERT INTO users (username,password) VALUES ('".$_POST['pseudo']."','".$_POST['motpasse']."')";
 		$result = odbc_do($db, $sql) or die( odbc_error($db) );
@@ -22,7 +24,6 @@ session_start();
             include('connectDbSQL.php');
 			$sql = "INSERT INTO t_client (Prenom, Nom, Date_Naissance)
 			VALUES ('".$_POST['prenom']."', '".$_POST['nom']."', '".$_POST['birth']."')";
-			// use exec() because no results are returned
 			$conn->exec($sql);
 		}
 		catch(PDOException $e){
@@ -53,26 +54,30 @@ session_start();
 		
 		<!-- Vérifier tout les champs !!! -->
 		<p> 
-			<label for="nom">UTILISATEUR : </label> 
-			<input type="text" name="pseudo" value=""> 
+			<label for="nom">UTILISATEUR* : </label> 
+			<input type="text" name="pseudo" value="mbonjour" required pattern="^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" title="Contient entre 8 et 20 caractères et . ou _"> 
 		</p> 
 		<p> 
-			<label for="nom">Prénom : </label> 
-			<input type="text" name="prenom" value=""> 
+			<label for="nom">Prénom* : </label> 
+			<input type="text" name="prenom" value="Mickael" required pattern="^[A-z]{2,20}$" title="Seulement des lettres, jusqu'à 20 caractères"> 
 		</p> 
 		<p> 
-			<label for="motdepasse">MOT DE PASSE : </label> 
-			<input type="password" name="motpasse"> 
+			<label for="motdepasse">MOT DE PASSE* : </label> 
+			<input type="password" name="motpasse" required pattern="^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=/.]).*$" title="Min. 8 caractères dont 1 nombre, 1 caractère spécial et 1 lettre majuscule p. ex. Mbonjour.1"> 
 		</p>
 		<p> 
-			<label for="nom">Nom de famille : </label> 
-			<input type="text" name="nom" value=""> 
+			<label for="nom">Nom de famille* : </label> 
+			<input type="text" name="nom" value="Bonjour" required pattern="^[A-z]{2,25}$" title="Seulement des lettres, jusqu'à 25 caractères"> 
 		</p>
 		<p> 
-			<label for="nom">Date de naissance : </label> 
-			<input type="date" name="birth">
+			<label for="nom">Email* : </label> 
+			<input type="email" name="email" value="mic.bonjour@gmail.com" required> 
 		</p>
-		
+		<p> 
+			<label for="nom">Date de naissance* : </label> 
+			<input type="date" name="birth" value="<?php echo date("Y-m-d");?>" required pattern="^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$" title="Date valide 24/04/1998">
+		</p>
+		<p>Les champs marqués d'une * sont obligatoires, merci bien !</p>
 		<p> 
 			<input type="submit" name="submit"value="Create User"> 
 		</p> 
