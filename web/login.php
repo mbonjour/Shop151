@@ -41,7 +41,8 @@
 	{
 		// Authentification - vérification des données UTILISATEUR et MOT DE PASSE
 		include("verif.php");
-	
+		include("connectDbAccess.php");
+
 		// Les données du formulaire sont-elles complètes ?
 		if (  $_POST['pseudo']!='' &&  $_POST['motpasse']!=''  )
 		{ 
@@ -63,6 +64,7 @@
 
 				// Mémorisation de l'utilisateur est-elle souhaitée?
 				setcookie('UserName',$user,time()+3600);
+				setcookie('admin',$user,time()+3600);
 				
 				if ( isset($_POST['memo']) )
 				{
@@ -79,7 +81,17 @@
 						setcookie('memo',false,time()+3600);
 					}
 				}
-			
+				$sql  = "SELECT isAdmin FROM users WHERE username='".$_POST["pseudo"]."'";
+				$result = odbc_do($db, $sql) or die( odbc_error($db) );
+				while($myrow = odbc_fetch_array( $result )){
+    				$isAdmin[]= $myrow;
+				}
+				if ($isAdmin[0]['isAdmin']==1){
+				setcookie('admin',$isAdmin[0]['isAdmin'],time()+3600);
+				}
+				else{
+				setcookie('admin',$isAdmin[0]['isAdmin'],time()+3600);
+				}
 				// Lien vers la page qui nécessite une authentification
 				header('location:home.php');
 				exit();

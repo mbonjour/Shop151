@@ -16,15 +16,16 @@ session_start();
 		$_SESSION['messageInfo']="";
 
         include('connectDbAccess.php');
-		$sql  = "INSERT INTO users (username,password) VALUES ('".$_POST['pseudo']."','".$_POST['motpasse']."')";
-		$result = odbc_do($db, $sql) or die( odbc_error($db) );
+		$sqlInsertAccess  = "INSERT INTO users (username,password) VALUES ('".$_POST['pseudo']."','".$_POST['motpasse']."')";
+		$result = odbc_do($db, $sqlInsertAccess) or die( odbc_error($db) );
+		
 		odbc_close($db);
 
 		try {
             include('connectDbSQL.php');
-			$sql = "INSERT INTO t_client (Prenom, Nom, Date_Naissance)
+			$sqlInsertSQL = "INSERT INTO t_client (Prenom, Nom, Date_Naissance)
 			VALUES ('".$_POST['prenom']."', '".$_POST['nom']."', '".$_POST['birth']."')";
-			$conn->exec($sql);
+			$conn->exec($sqlInsertSQL);
 		}
 		catch(PDOException $e){
 			echo "Connection failed: " . $e->getMessage();
