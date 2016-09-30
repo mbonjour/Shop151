@@ -23,15 +23,14 @@
 					?>
 					</TH> <!-- PHP ICI POUR AFFICHER USER AUTH SI IL Y EN A UN -->
 				<?php 
-				if(isset($_SESSION['UserName']) && $_SESSION['UserName']!="")
+				if(isset($_COOKIE['UserName']) && $_COOKIE['UserName']!="")
 				{
-					// if ( isset($_COOKIE['admin']) )
-					// {	
-						echo ("<TH><a class=\"linkNav\" href=\"./administration.php\" target=\"blank\">prout</a></TH>");
-						// if($_COOKIE['admin']==true){
-						// 	echo ("<TH><a class=\"linkNav\" href=\"./administration.php\" target=\"blank\">Administration</a></TH>");
-						// }
-					// }
+					if ( isset($_COOKIE['admin']) )
+					{	
+						if($_COOKIE['admin']==true){
+							echo ("<TH><a class=\"linkNav\" href=\"./administration.php\" target=\"blank\">Administration</a></TH>");
+						}
+					}
 				}
 				?>
 				</TR> 
