@@ -22,9 +22,9 @@ session_start();
 		?>
 		<main>
 			<div width=100% align="center">
-				<img src="../pictures/body.jpg" width=100%/>
+				<img src="../pictures/body.jpg" width=80% height=80%/>
 			</div>
-			<font size=2>© 2009 - Fondation SuisseMobile - <a href="http://www.suissemobile.ch" >www.suissemobile.ch</a></font>
+			<font size=2>© 2016 - Fondation FistMobile</a></font>
 		</main>
 		<?php
 		include('footer.php');
