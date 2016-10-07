@@ -163,7 +163,7 @@ echo '<html>
 			
 			// Affichage des titres du tableau
 			echo '<tr>';
-			foreach ($database_titles as $Titre)
+			foreach ($database_titles as $Titre)//TODO: Remplir database_titles avec $database[][xxxx]
 			{
 				echo '<th align="left" bgcolor="dcdcdc">'.$Titre.'</th>';
 			}
@@ -173,9 +173,37 @@ echo '<html>
 			echo'<tr valign=center>';
 			for ($Article=$Premier_Art_Page; $Article < $Dernier_Art_Page; $Article++)
 			{
+				$i=0;
 					foreach ( $database[$Article] as $value)
 					{
-						echo'<td align="left" bgcolor="ffffff">'.$value.'</td>';
+						switch($i){
+							case 0:
+								$i++;
+								break;
+							case 1:
+								echo'<td align="left" bgcolor="ffffff"><strong>'.$value.'</strong></td>';
+								$i++;
+								break;
+							case 2:
+								echo'<td align="left" bgcolor="ffffff">'.$value.'</td>';
+								$i++;
+								break;
+							case 3:
+								echo'<td align="left" bgcolor="ffffff">Prix (CHF) : '.$value.'</td>';
+								$i++;
+								break;
+							case 4:
+								echo'<td align="left" bgcolor="ffffff"><img src="'.$value.'" alt="imageArticles" class="imgArt"></td>';
+								$i++;  
+							break;
+							case 5:
+								echo'<td align="left" bgcolor="ffffff">'.$value.'</td>';
+								$i++;
+								break;
+							default:
+								echo'<td align="left" bgcolor="ffffff">'.$value.'</td>';
+								$i++;
+						}
 					}
 					echo'</tr>';
                     
@@ -194,7 +222,8 @@ echo '<html>
 
 	echo '</body>
 </html>';
-//////////////////////////////////////////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////////////////
 // Fin du script
 //////////////////////////////////////////////////////////////////////////////////////////////////
 ?>

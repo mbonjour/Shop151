@@ -1,6 +1,6 @@
 .linkNav:hover
 {
-    color: cornflowerblue;
+    color: slategray;
     text-decoration: none;
     font-weight: bold;
 }
@@ -23,4 +23,16 @@ table {
 table, th, td {
    border: 1px solid gray;
    padding:5px;
+}
+.tableNav{
+    background-color: #F215f2;
+    color:#F215f2;
+    border: "5";
+    border-color: gray;
+    align-content:"center";
+    width:100%;
+}
+.imgArt{
+    width:304px;
+    height:228px;
 }
