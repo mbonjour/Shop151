@@ -198,6 +198,7 @@ echo '<html>
 							break;
 							case 5:
 								echo'<td align="left" bgcolor="ffffff">'.$value.'</td>';
+                                echo'<td align="left" bgcolor="ffffff">Ajouter au panier</td>';
 								$i++;
 								break;
 							default:

@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>A modifier</title>
+		<title>Administration - Articles</title>
 	</head>
 	<body>
         <?php
@@ -35,7 +35,6 @@
 				while ($donnees = mysql_fetch_array($reponse))
 				{
 					$data[]=$donnees;
-				
 				}
 				for ($i=0;$i<count($data);$i++){
 					echo("<option value=\"".$data[$i]['id_Category']."\">".$data[$i]['id_Category']."</option>");
