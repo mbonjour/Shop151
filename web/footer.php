@@ -1,4 +1,3 @@
-<link rel="stylesheet" type="text/css" href="./css/style.css">
 	<footer>
 			<br/><br/>
 			<TABLE class="tableNav"> 

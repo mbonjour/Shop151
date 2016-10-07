@@ -7,9 +7,6 @@ Inter D�pendances : (Fichiers d�pendants)
 
 <?php
 session_start();
-    
-    // Identificateurs
-	$dbNameAccess = $_SERVER['DOCUMENT_ROOT']."\\Users\\dbUsers.mdb";
 
 	if ( isset($_POST['submit']) )
 	{
