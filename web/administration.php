@@ -34,7 +34,10 @@
 				while ($donnees = mysql_fetch_array($reponse))
 				{
 					$data[]=$donnees;
-				echo("<option value=\"".$donnees['id_Category']."\"></option>");
+				
+				}
+				for ($i=0;$i<count($data);$i++){
+					echo("<option value=\"".$data[$i]['id_Category']."\">".$data[$i]['id_Category']."</option>");
 				}
 			?>
 			
