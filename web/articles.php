@@ -20,7 +20,7 @@
 	// Donn�es pour les essais
 	$Titre_Liste = array();
 	$Liste = array();
-	
+	$currentId=0;
 	
 	// Initialisation des variables
 	$path_files='../Files/';					// Dossier des fichiers ressources
@@ -178,10 +178,11 @@ echo '<html>
 					{
 						switch($i){
 							case 0:
+								$currentId=$value;
 								$i++;
 								break;
 							case 1:
-								echo'<td align="left" bgcolor="ffffff"><strong>'.$value.'</strong></td>';
+								echo'<td align="left" bgcolor="ffffff"><strong><a href="../web/viewArticle.php?id='.$currentId.'">'.$value.'</a></strong></td>';
 								$i++;
 								break;
 							case 2:
