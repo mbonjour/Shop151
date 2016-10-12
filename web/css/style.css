@@ -45,7 +45,7 @@ table, th, td {
   text-align: center;
 }
 #menu-accordeon li {
-   margin-bottom:2px;
+   margin-bottom:0px
 }
 #menu-accordeon li li {
    max-height:0;
@@ -60,12 +60,9 @@ table, th, td {
   text-decoration: none;
 
   padding: 8px 0;
-  font-family: verdana;
-  font-size:1.2em
+  font-family: verdana
 }
-#menu-accordeon ul li a, #menu-accordeon li:hover li a {
-  font-size:1em
-}
+
 #menu-accordeon li:hover {
    background: #F215f2
 }

@@ -30,7 +30,7 @@
 	{
 		if ( isset($_COOKIE['memo'] ) )
 		{
-			if($_COOKIE['memo']==true)
+			if($_COOKIE['memo'] == true)
 			{
 				$pseudo=$_COOKIE['UserName'];
 			}
@@ -46,6 +46,7 @@
 		// Les données du formulaire sont-elles complètes ?
 		if (  $_POST['pseudo']!='' &&  $_POST['motpasse']!=''  )
 		{ 
+			echo ("wtf2");
 			// OUI
 			// On mémorise les informations
 			$user = $_POST['pseudo'] ; 
@@ -54,6 +55,7 @@
 			//  Le couple Nom et mot de passe sont-ils valides ?
 			if ( verification($user, $pwd, $users) )
 			{ 
+				echo ("wtf3");
 				// OUI
 				// L'utilisateur est identifié 
 				// et on change d'identifiant de session (pour plus de sécurité) 
@@ -86,7 +88,7 @@
 				while($myrow = odbc_fetch_array( $result )){
     				$isAdmin[]= $myrow;
 				}
-				if ($isAdmin[0]['isAdmin']==1){
+				if ($isAdmin[0]['isAdmin'] == 1){
 				setcookie('admin',$isAdmin[0]['isAdmin'],time()+3600);
 				}
 				else{
@@ -120,7 +122,7 @@
 		<?php
 		include('header.php');
 		?>
-		<form method="post" action="login.php">
+		<form method="post" action="login.php" enctype="multipart/form-data">
 		<h2>Authentification personnelle</h2>
 		
 		<?php

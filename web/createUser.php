@@ -13,7 +13,7 @@ session_start();
 		$_SESSION['messageInfo']="";
 
         include('connectDbAccess.php');
-		$sqlInsertAccess  = "INSERT INTO users (username,password) VALUES ('".$_POST['pseudo']."','".$_POST['motpasse']."')";
+		$sqlInsertAccess  = "INSERT INTO users (username,password) VALUES ('".addslashes($_POST['pseudo'])."','".addslashes($_POST['motpasse'])."')";
 		$result = odbc_do($db, $sqlInsertAccess) or die( odbc_error($db) );
 		
 		odbc_close($db);
@@ -21,7 +21,7 @@ session_start();
 		try {
             include('connectDbSQL.php');
 			$sqlInsertSQL = "INSERT INTO t_client (Prenom, Nom, Date_Naissance)
-			VALUES ('".$_POST['prenom']."', '".$_POST['nom']."', '".$_POST['birth']."')";
+			VALUES ('".$_POST['prenom']."', '".addslashes($_POST['nom'])."', '".addslashes($_POST['birth'])."')";
 			$conn->exec($sqlInsertSQL);
 		}
 		catch(PDOException $e){
