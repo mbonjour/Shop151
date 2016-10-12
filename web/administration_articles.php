@@ -60,21 +60,33 @@
 					<input type="text" name="categorie" id="categorie" placeholder="Ex : Homme" size="30" maxlength="30" />
 				</p>
 				<input type="submit" name="catenregistrer" value="Enregistrer la categorie">
-				<input type="reset" name="breset" value="Effacer">
 			</section>
 		</form>
-		<form action="viewArticle.php" enctype="multipart/form-data">
+		<form method="post" action="viewAdminArticle.php" enctype="multipart/form-data">
 			<section>
 				<H1>Modifier un Article</H1>
 				<p>
-					<label for="article">Choix Article à modifier : </label>
-					<input type="text" name="modifArt" id="modifArt" placeholder="" size="30" maxlength="30" />
+					<label for="ARTMODIFY">Catégorie de l'article :</label>
+				<select name="artModify" id="artModify" size="1" style="width:150px">
+				<?php
+					$dataArt=array();
+					$donneesArt = array();
+					$sqlArt="SELECT `Nom` FROM `t_articles`";
+					$reponseArt = mysql_query($sqlArt);
+					while ($donneesArt = mysql_fetch_array($reponseArt))
+					{
+						$dataArt[]=$donneesArt;
+					}
+					for ($y=0;$y<count($dataArt);$y++){
+						echo("<option value=\"".$dataArt[$y]['Nom']."\">".$dataArt[$y]['Nom']."</option>");
+					}
+					print_r($donneesArt);
+				?>
+				</select>
 				</p>
-				<input type="submit" name="artmodif" value="Modifier la categorie">
-				<input type="reset" name="breset" value="Effacer">
+				<input type="submit" name="artModifier" value="Modifier l'article">
 			</section>
 		</form>
-		
         <?php
             include('footer.php');
         ?>
