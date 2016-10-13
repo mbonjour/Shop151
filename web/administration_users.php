@@ -1,6 +1,7 @@
 <?php
 include('header.php');
 include('connectDbAccess.php');
+include('verifIfAdmin.php');
 
 session_start();
 $users=array();

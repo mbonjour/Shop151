@@ -94,7 +94,7 @@
 				else{
 				setcookie('admin',$isAdmin[0]['isAdmin'],time()+3600);
 				}
-                odbc_close($db);
+				odbc_close($db);
 				// Lien vers la page qui nécessite une authentification
 				header('location:home.php');
 				exit();

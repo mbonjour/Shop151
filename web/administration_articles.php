@@ -7,10 +7,8 @@
             include('header.php');
 			include('connectDbSQL.php');
 			include('connectDbAccess.php');
+			include('verifIfAdmin.php');
 			session_start();
-			if (!isset($_SESSION['name'])){
-				header('location:home.php');
-			}
         ?>
 		<form method="post" action="traitement_articles.php" enctype="multipart/form-data">
 			<section>
@@ -80,7 +78,6 @@
 					for ($y=0;$y<count($dataArt);$y++){
 						echo("<option value=\"".$dataArt[$y]['Nom']."\">".$dataArt[$y]['Nom']."</option>");
 					}
-					print_r($donneesArt);
 				?>
 				</select>
 				</p>
