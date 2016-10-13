@@ -31,7 +31,7 @@
 				</p>
 				<p>
 					<label for="artprix">Prix de l\'article(CHF) :</label>
-					<input type="tel" name="artprix" id="artprix" value="'.$price.'" maxlength="10" />
+					<input type="text" name="artprix" id="artprix" value="'.$price.'" maxlength="10" />
 				</p>
 				<p>
 					<label for="artdescription">Insérer une description :</label>

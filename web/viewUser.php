@@ -2,7 +2,8 @@
     include('header.php');
     session_start();
     include('connectDbSQL.php');
-    include('connectDbAccess.php');  
+    include('connectDbAccess.php');
+    include('verifIfAdmin.php');
 
     $currentClient = "";
     $clientIsAdmin = 1;
@@ -25,9 +26,19 @@
     <html>
         <body>
             <main>
-                <p>Nom de la personne : <strong>'.$lastName.'</strong></p>
-                <p>Prenom :  '.$firstName.'</p>
-                <p>Date de naissance : '.$birthDate.'</p>
+            <form method="post" action="viewUser.php" enctype="multipart/form-data">
+				<p>
+					<label for="nom">Nom de famille :</label>
+					<input type="text" name="nom" id="nom" value="'.$lastName.'" size="30" maxlength="30" />
+				</p>
+				<p>
+					<label for="prenom">Prénom :</label>
+					<input type="text" name="prenom" id="prenom" value="'.$firstName.'" maxlength="10" />
+				</p>
+                <p>
+					<label for="birthDate">Date de naissance :</label>
+					<input type="date" name="birthDate" id="birthDate" value="'.$firstName.'" maxlength="10" />
+				</p>
             </main>
         </body>
     </html>');
