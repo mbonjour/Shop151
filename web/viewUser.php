@@ -37,8 +37,9 @@
 				</p>
                 <p>
 					<label for="birthDate">Date de naissance :</label>
-					<input type="date" name="birthDate" id="birthDate" value="'.$firstName.'" maxlength="10" />
+					<input type="date" name="birthDate" id="birthDate" value="'.date("Y-m-d",strtotime($birthDate)).'" maxlength="10" />
 				</p>
+                <input type="submit" name="userModif" value="Modifier Client">
             </main>
         </body>
     </html>');

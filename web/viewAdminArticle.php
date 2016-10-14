@@ -15,6 +15,7 @@
     $price = $data['Prix'];
     $imgFilePath = $data['Image_Path'];
     $category = $data['FK_Category'];
+	$selected="";
     $data=array();
 	$donnees=array();
     echo ('
@@ -50,10 +51,15 @@
 					while ($donnees = mysql_fetch_array($reponse))
 					{
 						$data[]=$donnees;
-				
 					}
 					for ($i=0;$i<count($data);$i++){
-						echo("<option value=\"".$data[$i]['id_Category']."\">".$data[$i]['id_Category']."</option>");
+						if($data[$i]['id_Category'] == $category){
+							$selected="selected=\"selected\"";
+						}
+						else {
+							$selected="";
+						}
+						echo("<option value=\"".$data[$i]['id_Category']."\"".$selected.">".$data[$i]['id_Category']."</option>");
 					}
                     mysql_close();
                 echo('
