@@ -26,7 +26,6 @@
 		function verification($nom, $pass, &$data)
 		{
 			$verify = false;
-			echo ("wtf");
 			for ($x=0; $x < count($data); $x++)
 			{
 				if ( ($data[$x]['username'] == $nom) && ($data[$x]['password'] == $pass) )
@@ -47,7 +46,6 @@
 		$result = odbc_do($db, $sql) or die( odbc_error($db) );
 		//odbc_result_all($result);
 		while($myrow = odbc_fetch_array( $result )){
-			echo $myrow;
     		$users[]= $myrow;
 		}
 		//affichage des résultats, pour savoir si l'insertion a marchée:

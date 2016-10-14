@@ -17,6 +17,7 @@ if(isset($_POST['artenregistrer'])) {
         $sql  = "INSERT INTO `t_category`(`id_Category`) VALUES ('".addslashes($_POST['categorie'])."')";
 		mysql_query($sql) or die (mysql_error($db));
 		mysql_close($db);
+        mkdir("../files/ImgArticles/".addslashes($_POST['categorie']));
         header('location:administration_articles.php');
     }
 ?>

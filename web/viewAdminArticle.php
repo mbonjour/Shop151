@@ -8,8 +8,8 @@
     $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
     // on fait une boucle qui va faire un tour pour chaque enregistrement
     $data = mysql_fetch_assoc($req);  
-
-    $currentId = $data['id_Articles'];
+    
+    $currentId=$data['id_Articles'];
     $name = $data['Nom'];
     $description = $data['Description'];
     $price = $data['Prix'];
@@ -18,6 +18,26 @@
 	$selected="";
     $data=array();
 	$donnees=array();
+    
+    if (isset($_POST['artmodif'])){
+        if($_POST['article'] != "" && $_POST['artprix'] != "" && $_POST['artdescription'] != "" && $_POST['artcategory'] != ""){
+            if($_FILES['fileArt']['name'] != ""){
+                $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png' );
+                if ($_FILES['fileArt']['error'] > 0) $erreur = "Erreur lors du transfert";
+                $extension_upload = strtolower(  substr(  strrchr($_FILES['fileArt']['name'], '.')  ,1)  );
+                if (!in_array($extension_upload,$extensions_valides) ) die ("Extension incorrecte");
+                $nom = "../files/ImgArticles/".$_POST['artcategory']."/".$_FILES['fileArt']['name'];
+                $resultat = move_uploaded_file($_FILES['fileArt']['tmp_name'],$nom);
+                $sqlImg="UPDATE `t_articles` SET `Nom`='".addslashes($_POST['article'])."',`Description`='".addslashes($_POST['artdescription'])."',`Prix`=".addslashes($_POST['artprix']).",`Image_Path`='".addslashes($nom)."',`FK_Category`='".addslashes($_POST['artcategory'])."' WHERE `id_Articles`=".$_POST['IdArt'];
+                mysql_query($sqlImg) or die('Erreur SQL !<br>'.$sqlImg.'<br>'.mysql_error());
+            }
+            else{
+                $sqlNormal="UPDATE `t_articles` SET `Nom`='".addslashes($_POST['article'])."',`Description`='".addslashes($_POST['artdescription'])."',`Prix`=".addslashes($_POST['artprix']).",`FK_Category`='".addslashes($_POST['artcategory'])."' WHERE `id_Articles`=".$_POST['IdArt'];
+                mysql_query($sqlNormal) or die('Erreur SQL !<br>'.$sqlNormal.'<br>'.mysql_error());
+            }
+        }
+        header('location:articles.php');
+    }
     echo ('
     <h1>'.$name.'</h1>
     <img src="'.$imgFilePath.'" alt="imageArticles" class="imgArt">
@@ -26,7 +46,8 @@
 
     
     <form method="post" action="viewAdminArticle.php" enctype="multipart/form-data">
-				<p>
+				<input type="hidden" name="IdArt" value='.$currentId.'>
+                <p>
 					<label for="article">Nom de l\'article :</label>
 					<input type="text" name="article" id="article" value="'.$name.'" size="30" maxlength="30" />
 				</p>
@@ -61,11 +82,10 @@
 						}
 						echo("<option value=\"".$data[$i]['id_Category']."\"".$selected.">".$data[$i]['id_Category']."</option>");
 					}
-                    mysql_close();
                 echo('
 				</select>
 				</p>
-				<input type="submit" name="artenregistrer" value="Enregistrer l\'article">
+				<input type="submit" name="artmodif" value="Modifier l\'article">
 				<input type="reset" name="breset" value="Effacer">
 		</form>
         ');

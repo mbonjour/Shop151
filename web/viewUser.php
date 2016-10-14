@@ -39,6 +39,24 @@
 					<label for="birthDate">Date de naissance :</label>
 					<input type="date" name="birthDate" id="birthDate" value="'.date("Y-m-d",strtotime($birthDate)).'" maxlength="10" />
 				</p>
+                <p>
+					<select name="artcategory" id="artcategory" size="1" style="width:150px">');
+                    
+					$data=array();
+					$donnees=array();
+					$sql="SELECT isActive FROM users";
+					$result = odbc_do($db, $sql) or die( odbc_error($db) );
+					while ($myrow = odbc_fetch_array( $result ))
+					{
+						$data[]=$myrow;
+					}
+                    odbc_close($db);
+					for ($i=0;$i<count($data);$i++){
+						echo("<option value=\"".$data[$i]['id_Category']."\">".$data[$i]['id_Category']."</option>");
+					}
+                echo('
+				</select>
+				</p>
                 <input type="submit" name="userModif" value="Modifier Client">
             </main>
         </body>
