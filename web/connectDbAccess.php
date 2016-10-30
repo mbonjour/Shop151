@@ -1,6 +1,6 @@
 <?php
 $db;
-$dbName = $_SERVER['DOCUMENT_ROOT']."\\Users\\dbUsers.mdb";
+$dbName = $_SERVER['DOCUMENT_ROOT']."\\users\\dbUser.mdb";
 if (!file_exists($dbName)) {
 			die("Could not find database file.". $dbName);
 }

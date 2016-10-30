@@ -24,7 +24,7 @@ USE `projet151` ;
 DROP TABLE IF EXISTS `projet151`.`T_Adresse` ;
 
 CREATE TABLE IF NOT EXISTS `projet151`.`T_Adresse` (
-  `id_Adresse` INT NOT NULL,
+  `id_Adresse` INT NOT NULL AUTO_INCREMENT,
   `Ville` VARCHAR(45) NOT NULL,
   `NPA` INT NOT NULL,
   `Rue` VARCHAR(250) NOT NULL,
@@ -39,7 +39,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `projet151`.`T_Client` ;
 
 CREATE TABLE IF NOT EXISTS `projet151`.`T_Client` (
-  `id_Client` INT NOT NULL,
+  `id_Client` INT NOT NULL AUTO_INCREMENT,
   `Nom` VARCHAR(45) NULL,
   `Prenom` VARCHAR(45) NULL,
   `Date_Naissance` DATE NULL,
@@ -64,7 +64,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `projet151`.`T_Adresse_Client` ;
 
 CREATE TABLE IF NOT EXISTS `projet151`.`T_Adresse_Client` (
-  `id_Adresse_Client` INT NOT NULL,
+  `id_Adresse_Client` INT NOT NULL AUTO_INCREMENT,
   `FK_Client` INT NOT NULL,
   `FK_Adresse` INT NOT NULL,
   `FK_Type` VARCHAR(45) NOT NULL,
@@ -107,7 +107,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `projet151`.`T_Articles` ;
 
 CREATE TABLE IF NOT EXISTS `projet151`.`T_Articles` (
-  `id_Articles` INT NOT NULL,
+  `id_Articles` INT NOT NULL AUTO_INCREMENT,
   `Nom` VARCHAR(45) NULL,
   `Description` TEXT(500) NULL,
   `Prix` VARCHAR(10) NULL,
@@ -129,7 +129,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `projet151`.`T_Commande` ;
 
 CREATE TABLE IF NOT EXISTS `projet151`.`T_Commande` (
-  `id_Commande` INT NOT NULL,
+  `id_Commande` INT NOT NULL AUTO_INCREMENT,
   `session_ID` INT NULL,
   PRIMARY KEY (`id_Commande`))
 ENGINE = InnoDB;
@@ -152,7 +152,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `projet151`.`T_Commande_Client` ;
 
 CREATE TABLE IF NOT EXISTS `projet151`.`T_Commande_Client` (
-  `id_Commande_Client` INT NOT NULL,
+  `id_Commande_Client` INT NOT NULL AUTO_INCREMENT,
   `Date_Commande_Client` VARCHAR(45) NULL,
   `FK_Commande` INT NOT NULL,
   `FK_Client` INT NOT NULL,
@@ -185,7 +185,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `projet151`.`T_Content` ;
 
 CREATE TABLE IF NOT EXISTS `projet151`.`T_Content` (
-  `id_Content` INT NOT NULL,
+  `id_Content` INT NOT NULL AUTO_INCREMENT,
   `Quantité` INT NULL,
   `FK_Commande` INT NOT NULL,
   `FK_Articles` INT NOT NULL,
@@ -208,3 +208,5 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+INSERT INTO `t_type_adresse` (`id_Type_Adresse`) VALUES ('Livraison'), ('Facturation')
