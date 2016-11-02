@@ -26,6 +26,7 @@
                 <p>Prix : '.$price.'</p>
                 <p>Catégorie : '.$category.'</p>
                 <a href="../web/add_panier.php?id='.$currentId.'">Ajouter au panier</a>
+                <p>'.$messageErreur.'</p>
             </main>
         </body>
     </html>');
