@@ -6,7 +6,14 @@
     $idArticle=$_GET['id'];
 
     //Lier la commande (grâce au session_id) à l'article en ajoutant dans la table T_Content une entrée et une quantité à 1 par défaut, dans la gestion du panier on personalisera
+    $sqlSelectIdCommand="SELECT `id_Commande` FROM `t_commande` WHERE `session_ID`='".session_id()."'";
+    $resultIdCommand=mysql_query($sqlSelectIdCommand);
+    $IdCommand=mysql_result($resultIdCommand,0);
+    $InsertContentCommand="INSERT INTO `t_content` (`FK_Commande`, `FK_Articles`) VALUES (".$IdCommand['id_Commande'].",".$idArticle.")";
+    echo($InsertContentCommand);
+    mysql_query($InsertContentCommand) or die(mysql_error());
+    mysql_close();
 
-    header('location:./articles.php');
+    header('location:articles.php');
 
     ?>

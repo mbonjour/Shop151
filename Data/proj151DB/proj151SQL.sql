@@ -153,7 +153,7 @@ DROP TABLE IF EXISTS `projet151`.`T_Commande_Client` ;
 
 CREATE TABLE IF NOT EXISTS `projet151`.`T_Commande_Client` (
   `id_Commande_Client` INT NOT NULL AUTO_INCREMENT,
-  `Date_Commande_Client` VARCHAR(45) NULL,
+  `Date_Commande_Client` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   `FK_Commande` INT NOT NULL,
   `FK_Client` INT NOT NULL,
   `FK_Etat` VARCHAR(45) NOT NULL,
@@ -186,7 +186,7 @@ DROP TABLE IF EXISTS `projet151`.`T_Content` ;
 
 CREATE TABLE IF NOT EXISTS `projet151`.`T_Content` (
   `id_Content` INT NOT NULL AUTO_INCREMENT,
-  `Quantité` INT NULL,
+  `Quantity` INT NULL,
   `FK_Commande` INT NOT NULL,
   `FK_Articles` INT NOT NULL,
   PRIMARY KEY (`id_Content`),

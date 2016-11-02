@@ -25,6 +25,7 @@
                 <p>Description de l\'article :  '.$description.'</p>
                 <p>Prix : '.$price.'</p>
                 <p>Catégorie : '.$category.'</p>
+                <a href="../web/add_panier.php?id='.$currentId.'">Ajouter au panier</a>
             </main>
         </body>
     </html>');

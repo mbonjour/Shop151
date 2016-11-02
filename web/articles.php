@@ -199,7 +199,7 @@ echo '<html>
 							break;
 							case 5:
 								echo'<td align="left" bgcolor="ffffff">'.$value.'</td>';
-                                echo'<td align="left" bgcolor="ffffff"><a href="/add_panier.php?id='.$currentId.'">Ajouter au panier</a></td>';
+                                echo'<td align="left" bgcolor="ffffff"><a href="../web/add_panier.php?id='.$currentId.'">Ajouter au panier</a></td>';
 								$i++;
 								break;
 							default:
