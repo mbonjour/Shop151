@@ -100,6 +100,9 @@
                     header('location:home.php');
                     odbc_close($db);			
                     exit();
+
+					//Faire la création de la commande ???
+					
                 }
 			else {
 				// NON
