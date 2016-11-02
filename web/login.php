@@ -50,7 +50,7 @@
 			// On mémorise les informations
 			$user = $_POST['pseudo'] ; 
 			$pwd = $_POST['motpasse'];
-	        $sqlActive  = "SELECT isActive FROM users WHERE username='".$_POST["pseudo"]."'";
+	        $sqlActive  = "SELECT isActive,ID FROM users WHERE username='".$_POST["pseudo"]."'";
             $resultActive = odbc_do($db, $sqlActive) or die( odbc_error($db) );
             while($myrow = odbc_fetch_array( $resultActive )){
                 $isActive[]= $myrow;
@@ -86,6 +86,11 @@
                             setcookie('memo',false,time()+3600);
                         }
                     }
+
+					//Faire la création de la commande ???
+					
+
+
                     $sql  = "SELECT isAdmin FROM users WHERE username='".$_POST["pseudo"]."'";
                     $result = odbc_do($db, $sql) or die( odbc_error($db) );
                     while($myrow = odbc_fetch_array( $result )){
@@ -97,12 +102,17 @@
                     else{
                         setcookie('admin',$isAdmin[0]['isAdmin'],time()+3600);
                     }
-                    header('location:home.php');
-                    odbc_close($db);			
-                    exit();
+                    odbc_close($db);                    
 
-					//Faire la création de la commande ???
-					
+					include('connectDbSQL.php');
+					$sqlInsertCommand="INSERT INTO `t_commande`(`session_ID`) VALUES ('".session_id()."')";
+					mysql_query($sqlInsertCommand);
+					$idCommand =  mysql_insert_id();
+					$sqlInsertCommandClient="INSERT INTO `t_commande_client`(`FK_Commande`, `FK_Client`, `FK_Etat`) VALUES (".$idCommand.",".$isActive[0]['ID'].",'Traitement')";
+					mysql_query($sqlInsertCommandClient);
+					mysql_close();
+					header('location:home.php');
+					exit();
                 }
 			else {
 				// NON
