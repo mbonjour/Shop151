@@ -23,13 +23,11 @@
 	$currentId=0;
 	
 	// Initialisation des variables
-	$path_files='../Files/';					// Dossier des fichiers ressources
-	$data_file='excursions.csv';				// Fichier de donn�es
 	$database_titles=array();				// Titres des Items des la base
 	$database=array();						// Liste des utilisateurs pour authentification
 	$choice=array("5","10","20","50","100");// Option du choix d'affichage d'article par page
 	$Nb_Tot_Page = 1;						// Nombre total de page du catalogue
-	$window_title = "Excursions";			// Titre de la fen�tre HTML
+	$window_title = "Articles";			// Titre de la fen�tre HTML
 	$sub_title = " Articles en vente";		// Titre de la page
 	$email = "mbonjour@protonmail.ch";	// Afresse mai pour le contact
 
@@ -50,7 +48,7 @@
         // on ferme la connexion à mysql
         mysql_close();
         $fields = count($database);      
-
+		
 	//////////////////////////////////////////////////////////////////////////////////////////////////
 	// Traitement des informations transmises dans l'URL ($_POST) et calculs de formattage des pages
 	//////////////////////////////////////////////////////////////////////////////////////////////////

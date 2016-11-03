@@ -4,7 +4,7 @@
     // $data = Array();
     include('connectDbSQL.php');  
     $idArticle=$_GET['id'];
-    if (!isset($_COOKIE['UserName']) && $_COOKIE['UserName']!=""){
+    if (isset($_COOKIE['UserName']) && $_COOKIE['UserName']!=""){
         //Lier la commande (grâce au session_id) à l'article en ajoutant dans la table T_Content une entrée et une quantité à 1 par défaut, dans la gestion du panier on personalisera
         $sqlSelectIdCommand="SELECT `id_Commande` FROM `t_commande` WHERE `session_ID`='".session_id()."'";
         $resultIdCommand=mysql_query($sqlSelectIdCommand);
