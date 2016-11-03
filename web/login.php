@@ -108,7 +108,7 @@
 					$sqlInsertCommand="INSERT INTO `t_commande`(`session_ID`) VALUES ('".session_id()."')";
 					mysql_query($sqlInsertCommand);
 					$idCommand =  mysql_insert_id();
-					$sqlInsertCommandClient="INSERT INTO `t_commande_client`(`FK_Commande`, `FK_Client`, `FK_Etat`) VALUES (".$idCommand.",".$isActive[0]['ID'].",'Traitement')";
+					$sqlInsertCommandClient="INSERT INTO `t_commande_client`(`FK_Commande`, `FK_Client`, `FK_Etat`) VALUES (".$idCommand.",".$isActive[0]['ID'].",'Factice')";
 					mysql_query($sqlInsertCommandClient);
 					mysql_close();
 					header('location:home.php');
