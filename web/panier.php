@@ -1,6 +1,6 @@
 <?php
-session_start();
-        // Donn�es pour les essais
+	session_start();
+    // Donn�es pour les essais
 	$Titre_Liste = array();
 	$Liste = array();
 	$currentId=0;
@@ -15,12 +15,14 @@ session_start();
 	$email = "mbonjour@protonmail.ch";	// Afresse mai pour le contact
 
         include('connectDbSQL.php');
-        $sqlSelectIdCommand="SELECT `id_Commande` FROM `t_commande` WHERE `session_ID`='".session_id()."'";
+        $sqlSelectIdCommand="SELECT `id_Commande`,`FK_Etat` FROM `t_commande` INNER JOIN `t_commande_client` ON `T_Commande`.`id_commande`=`t_commande_client`.`FK_Commande` WHERE `session_ID`='".session_id()."'";
         $resultSelectId=mysql_query($sqlSelectIdCommand);
         while ($id = mysql_fetch_array($resultSelectId))
         {
                 $idSelect[]=$id;
         }
+		$idCommand=$idSelect[0]['id_Commande'];
+		$stateCommand=$idSelect[0]['FK_Etat'];
         $sqlArticlesInCommand="SELECT `id_Articles`, `Nom`, `Description`, `Prix`, `Image_Path`, `FK_Category`,`Quantity` FROM `t_articles`
         INNER JOIN `t_content` 
         ON `t_articles`.`id_Articles`=`t_content`.`FK_Articles` 
@@ -34,6 +36,7 @@ session_start();
         }
         mysql_close();
         $fields = count($database);
+		if($fields>0 && $stateCommand=="Factice"){
         //////////////////////////////////////////////////////////////////////////////////////////////////
 	// Traitement des informations transmises dans l'URL ($_POST) et calculs de formattage des pages
 	//////////////////////////////////////////////////////////////////////////////////////////////////
@@ -206,6 +209,12 @@ echo '<html>
 			// Affichage du pied de page
 			echo '<center>|&nbsp&nbsp<a href="javascript:window.print()">Imprimer la page</a>&nbsp&nbsp|&nbsp&nbsp<a
 			href="mailto:'.$email.'">Contact</a>&nbsp&nbsp|</center></br>';
+			echo('<a href="../web/checkout.php?id='.$idCommand.'">Checkout !</a>');
+		}else{
+			include('header.php');
+			echo('<h1>Pas d\'articles dans le panier !</h1>');
+		}
+			
 			include('footer.php');
 
 	echo '</body>

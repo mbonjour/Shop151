@@ -9,6 +9,7 @@
         $sqlSelectIdCommand="SELECT `id_Commande` FROM `t_commande` WHERE `session_ID`='".session_id()."'";
         $resultIdCommand=mysql_query($sqlSelectIdCommand);
         $IdCommand=mysql_result($resultIdCommand,0);
+        //TODO: Vérifier que l'entrée n'existe pas déjà dans t_content par un SELECT et incrémenter la quantité si c'est le cas
         $InsertContentCommand="INSERT INTO `t_content` (`Quantity`, `FK_Commande`, `FK_Articles`) VALUES (1,".$IdCommand['id_Commande'].",".$idArticle.")";
         echo($InsertContentCommand);
         mysql_query($InsertContentCommand) or die(mysql_error());
