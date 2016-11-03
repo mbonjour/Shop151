@@ -214,13 +214,13 @@ echo '<html>
 			include('header.php');
 			echo('<h1>Pas d\'articles dans le panier !</h1>');
 		}
-			
+			echo('<a href="../web/historicCommands.php">Historique des commandes</a>');
 			include('footer.php');
 
 	echo '</body>
 </html>';
 
 ////////////////////////////////////////////////////////////////////////////////////////////
-// Fin du script
+// Fin du script -- Fin de ma vie aussi
 //////////////////////////////////////////////////////////////////////////////////////////////////
 ?>

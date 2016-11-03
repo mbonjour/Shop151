@@ -9,4 +9,6 @@
     echo('<h1>Votre commande a été passée, merci de votre participation !</h1>');
 
     include('footer.php');
+
+    //J'en peux tellement plus de voir que je fais de la merde sans pouvoir faire autrement...
 ?>
