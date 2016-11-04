@@ -34,9 +34,7 @@
             $database[]=$donnees;
     }
     mysql_close();
-    print('<pre>');
-    print_r($database);
-    print('</pre>');
+    
     $fields = count($database);
     echo('<section>
     <h1>Contenu de la commande</h1>
@@ -44,7 +42,7 @@
         for ($y=0; $y < $fields; $y++)
         {
             $i=0;
-                foreach ( $database[$Article] as $value)
+                foreach ( $database[$y] as $value)
                 {
                     switch($i){
                         case 0:
