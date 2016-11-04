@@ -4,7 +4,7 @@
     include('connectDbSQL.php');
     include('verifIfAdmin.php');
 
-    $sql="SELECT `FK_Commande`,`FK_Etat` FROM `t_Client` 
+    $sql="SELECT `FK_Commande`,`FK_Etat`,`Date_Commande_Client` FROM `t_Client` 
     INNER JOIN `t_commande_client` 
     ON `t_client`.`id_client`=`t_commande_client`.`FK_Client` 
     WHERE `id_client`=".$_POST['user'];
@@ -22,6 +22,7 @@
                     echo'<tr>';
                     echo'<td align="left" bgcolor="ffffff"><a href="../web/viewCommand.php?id='.$database[$y]['FK_Commande'].'">Voir/Modifier détails de la commande '.$database[$y]['FK_Commande'].'</a></td>';
                     echo'<td align="left" bgcolor="ffffff"><strong>Etat actuel : '.$database[$y]['FK_Etat'].'</strong></td>';
+                    echo('<td align="left" bgcolor="ffffff"><strong>Date Commande :'.$database[$y]['Date_Commande_Client'].'</strong></td>');
                     echo'</tr>';
                 }		
 	}

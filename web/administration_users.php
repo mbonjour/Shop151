@@ -14,7 +14,6 @@ $users=array();
 				$data=array();
 				$donnees=array();
 				$sql="SELECT * FROM `users`";
-				$reponse = mysql_query($sql);
 				$result = odbc_do($db, $sql) or die( odbc_error($db) );
 				while($myrow = odbc_fetch_array( $result )){
 					$users[]= $myrow;

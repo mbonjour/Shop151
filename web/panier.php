@@ -186,10 +186,10 @@ echo '<html>
 							        break;
 							case 5:
 								echo'<td align="left" bgcolor="ffffff">'.$value.'</td>';
-                                                                $i++;
-                                                                break;
-                                                        case 6:
-                                                                echo'<td align="left" bgcolor="ffffff">Quantité : '.$value.'</td>';
+								$i++;
+								break;
+						case 6:
+								echo'<td align="left" bgcolor="ffffff">Quantité : '.$value.'</td>';
 								$i++;
 								break;
 							default:

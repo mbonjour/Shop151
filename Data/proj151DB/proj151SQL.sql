@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS `projet151`.`T_Client` (
   `Nom` VARCHAR(45) NULL,
   `Prenom` VARCHAR(45) NULL,
   `Date_Naissance` DATE NULL,
+  `Email` VARCHAR(150) NULL,
   PRIMARY KEY (`id_Client`))
 ENGINE = InnoDB;
 

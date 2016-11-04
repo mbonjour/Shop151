@@ -83,7 +83,9 @@
         }
         
         echo('</table>
-            </section>
+            </section>');
+            if($_COOKIE['admin']==true){
+                echo('
             <section>
             <h1>Etat de la commande</h1>
             <form method="post" action="viewCommand.php" enctype="multipart/form-data">
@@ -122,6 +124,8 @@
                 <input type="reset" name="breset" value="Effacer">
                 </form>
             ');
+            }
+            
                     
         // Affichage du pied de page
         include('footer.php');
