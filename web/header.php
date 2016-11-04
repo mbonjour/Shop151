@@ -12,7 +12,8 @@
 							<li><a class="linkNav" href="../web/articles.php">Articles</a>
 								<ul>
 								<?php //TODO:Faire une liste déroulante en fct des catégories
-									$sql="SELECT id_Category FROM `t_category`";
+									include('connectDbSQL.php');
+									$sql="SELECT `id_Category` FROM `t_category`";
 									$reponse = mysql_query($sql);
 									while ($donnees = mysql_fetch_array($reponse))
 									{
@@ -21,6 +22,7 @@
 									for ($i=0;$i<count($data);$i++){
 										echo('<li><a href="articles_category.php?category='.$data[$i]['id_Category'].'">'.$data[$i]['id_Category'].'</a></li>');
 									}
+									mysql_close();
 								?>
 								</ul>	
 							</li>

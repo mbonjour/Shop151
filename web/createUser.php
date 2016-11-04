@@ -48,6 +48,15 @@ session_start();
 			$sqlInsertFa="INSERT INTO `t_adresse_client`(`FK_Adresse`, `FK_Client`, `FK_type`) VALUES ('".$idAdressFa."','".$idClientCreated."','Facturation')";
 			mysql_query($sqlInsertFa);
 		}
+
+		// $to  = 'mickael.bonjour@epfl.ch';
+        // $subject = 'Validation email';
+        // $message = "";//"Go to localhost/web/validateUser.php?id=".$idClientCreated;
+
+        // $headers = 'From: validate@epfl.ch' . "\r\n" .
+        //             'Reply-To: validate@epfl.ch' . "\r\n" .
+        //             'X-Mailer: PHP/' . phpversion();
+        // mail($to, $subject, $message, $headers);
         header('location:home.php');
     }
 ?>

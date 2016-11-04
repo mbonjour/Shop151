@@ -37,7 +37,7 @@
 	//////////////////////////////////////////////////////////////////////////////////////////////////
 	// Le dossier existe-t-il ?
 	    include('connectDbSQL.php');
-        $sql='SELECT * FROM `t_articles` WHERE `FK_Category`='.$_GET['category'];
+        $sql='SELECT * FROM `t_articles` WHERE `FK_Category`=\''.$_GET['category'].'\'';
         $req = mysql_query($sql) or die('Erreur SQL !<br>'.$sql.'<br>'.mysql_error());
         $articles=array();
         // on fait une boucle qui va faire un tour pour chaque enregistrement
